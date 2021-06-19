@@ -6,7 +6,7 @@ export default class StarMap extends React.Component{
         return(
             <View style={styles.container}>
                 <Text>
-                    Star Map
+                    Coming Soon
                 </Text>
             </View>
         )

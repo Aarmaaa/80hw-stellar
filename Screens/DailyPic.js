@@ -6,7 +6,7 @@ export default class DailyPic extends React.Component{
         return(
             <View style={styles.container}>
                 <Text>
-                    Daily Pic
+                    coming Soon
                 </Text>
             </View>
         )

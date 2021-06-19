@@ -6,7 +6,7 @@ export default class SpaceCraft extends React.Component{
         return(
             <View style={styles.container}>
                 <Text>
-                    Space Craft
+                    Coming Soon
                 </Text>
             </View>
         )
