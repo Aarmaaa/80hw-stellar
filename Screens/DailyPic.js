@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View, SafeAreaView, ImageBackground, TouchableOpacity, Linking, Image, StatusBar } from 'react-native';
+import { Alert, StyleSheet, Text, View, SafeAreaView, ImageBackground, TouchableOpacity, Linking, Image, StatusBar, Platform } from 'react-native';
 import axios from 'axios';
 
 export default class DailyPic extends React.Component{
@@ -7,7 +7,7 @@ export default class DailyPic extends React.Component{
     constructor(){
         super()
         this.state={
-            apod:{}
+            apod:[]
         }
     }
 
@@ -15,7 +15,7 @@ export default class DailyPic extends React.Component{
         axios
         .get("https://api.nasa.gov/planetary/apod?api_key=fqh8uiIIRbkRaXKLQi6ij9uHMHShBjEgy7rWShjE")
         .then (response => {
-            this.setState({apod: response})
+            this.setState({apod: response.data})
         })
         .catch( error => {
                 Alert.alert(error.message)
@@ -23,6 +23,9 @@ export default class DailyPic extends React.Component{
         )
     }
 
+    componentDidMount() {
+        this.getApod()
+    }
 
     render(){
         return(
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover',
-        alignItems:'center'
+        alignItems:'center',
     },
 
     routeText: {
@@ -90,11 +93,12 @@ const styles = StyleSheet.create({
 
     listContainer: {
         marginTop:50,
-        bottom:-200,
+        marginBottom:50,
     },
 
     explanation: {
         color:'white',
-        fontSize:15
+        fontSize:15,
+        marginLeft:10
     },
 })
